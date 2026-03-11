@@ -121,7 +121,7 @@ jobs:
 
           NAMES=$(awk -F'/' '{print $NF}' /tmp/changed-skills.txt | sed 's/-metadata\.json//' | paste -sd ', ')
           git commit -m "chore: enrich metadata for ${NAMES}"
-          git push origin main
+          git push origin HEAD:main
 
       # -----------------------------------------------------------------------
       # Post enrichment results as a PR comment (PR events only).
