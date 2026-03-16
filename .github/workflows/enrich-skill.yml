@@ -12,6 +12,29 @@ on:
     paths:
       - "skills/**-metadata.json"
 
+# =========================================================================
+# SECURITY ARCHITECTURE NOTE
+# =========================================================================
+# This workflow processes UNTRUSTED content from external contributors.
+# The enrichment script runs on PR content that may be malicious.
+#
+# THREAT MODEL:
+# 1. Script Poisoning: PR modifies scripts/enrich-skill.js
+#    → Mitigated by: inline scope check + base branch script restore
+# 2. Credential Theft: .git/config contains GITHUB_TOKEN
+#    → Mitigated by: persist-credentials: false
+# 3. Workflow Commands: Attacker output manipulates CI
+#    → Mitigated by: ::stop-commands:: wrapper
+# 4. Runtime Tokens: ACTIONS_RUNTIME_TOKEN in env
+#    → Mitigated by: env -u stripping
+# 5. Race Condition: scope-guard is independent
+#    → Mitigated by: inline scope verification
+# 6. Supply Chain TOCTOU: repo changes between scan and merge
+#    → Mitigated by: content_hash in enriched metadata
+#
+# NEVER: use PATs, pass unnecessary secrets, or skip scope checks.
+# =========================================================================
+
 jobs:
   enrich:
     name: Enrich & Validate Skills
