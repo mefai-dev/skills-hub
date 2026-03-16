@@ -51,8 +51,19 @@ jobs:
             FILES=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" \
               | grep 'skills/.*-metadata\.json' || true)
           else
-            FILES=$(git diff --name-only HEAD~1 HEAD \
-              | grep 'skills/.*-metadata\.json' || true)
+            # Use github.event.before instead of HEAD~1 to correctly handle
+            # multi-commit pushes and different merge strategies.
+            # HEAD~1 only diffs the last commit, silently skipping files
+            # changed in earlier commits of a multi-commit push.
+            BEFORE="${{ github.event.before }}"
+            if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              # Initial push — diff against empty tree
+              FILES=$(git diff --name-only 4b825dc642cb6eb9a060e54bf899d69f82cf01 HEAD \
+                | grep 'skills/.*-metadata\.json' || true)
+            else
+              FILES=$(git diff --name-only "$BEFORE" HEAD \
+                | grep 'skills/.*-metadata\.json' || true)
+            fi
           fi
 
           if [ -z "$FILES" ]; then
