@@ -19,6 +19,12 @@ jobs:
     permissions:
       contents: write       # needed to commit enriched files back to the PR branch
       pull-requests: write  # needed to post PR comments
+      # SECURITY NOTE: These permissions grant access to THIS repository only.
+      # However, if the workflow's GITHUB_TOKEN is replaced with a PAT or
+      # GitHub App token with broader scope, the enrichment script (which
+      # processes attacker-controlled PRs) could access other bnb-chain repos.
+      # NEVER use a PAT or org-scoped token in this workflow.
+      # The default GITHUB_TOKEN is scoped to this repo only — keep it that way.
 
     steps:
       - name: Checkout
