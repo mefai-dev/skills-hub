@@ -19,6 +19,8 @@ jobs:
     permissions:
       contents: write       # needed to commit enriched files back to the PR branch
       pull-requests: write  # needed to post PR comments
+      # Security: use the default GITHUB_TOKEN (repo-scoped). Do not substitute
+      # a PAT or org-scoped token; least privilege limits blast radius.
 
     steps:
       - name: Checkout
