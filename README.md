@@ -10,7 +10,7 @@ Each enriched skill lives as its own file in the [`skills/`](skills/) folder.
 
 | Skill | Category | Owner | AgentGuard |
 |-------|----------|-------|------------|
-| *(No skills yet — [submit yours!](CONTRIBUTING.md))* | | | |
+| *(No skills yet ··· [submit yours!](CONTRIBUTING.md))* | | | |
 
 ---
 
@@ -18,25 +18,25 @@ Each enriched skill lives as its own file in the [`skills/`](skills/) folder.
 
 ```
 Contributor opens PR
-  └─ adds skills/<skillname>-metadata.json
-        ├─ name
-        ├─ github_url
-        ├─ category
-        └─ description
-             ↓
+  ······ adds skills/<skillname>-metadata.json
+        ··�··· name
+        ··�··· github_url
+        ··�··· category
+        ······ description
+             ·�·
 GitHub Actions workflow runs automatically
-  ├─ ✓ Checks GitHub URL is accessible
-  ├─ ✓ Fetches owner username, display name, avatar, profile URL
-  ├─ ✓ Fetches latest commit hash
-  ├─ ✓ Calls AgentGuard API → injects security report URL
-  ├─ ✓ Stamps evaluated_at timestamp
-  └─ ✓ Writes enriched data back into <skillname>-metadata.json
-             ↓
+  ··�··· ·�· Checks GitHub URL is accessible
+  ··�··· ·�· Fetches owner username, display name, avatar, profile URL
+  ··�··· ·�· Fetches latest commit hash
+  ··�··· ·�· Calls AgentGuard API ·�� injects security report URL
+  ··�··· ·�· Stamps evaluated_at timestamp
+  ······ ·�· Writes enriched data back into <skillname>-metadata.json
+             ·�·
 PR comment shows enrichment preview
-             ↓
-Merge → enriched file committed automatically
+             ·�·
+Merge ·�� enriched file committed automatically
 ```
 
 ## Submit a Skill
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) — it takes about 2 minutes.
+See [CONTRIBUTING.md](CONTRIBUTING.md) ··· it takes about 2 minutes.

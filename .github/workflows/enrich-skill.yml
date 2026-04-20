@@ -38,10 +38,10 @@ jobs:
 
       # -----------------------------------------------------------------------
       # Detect which *-metadata.json files were added or changed.
-      # For PRs: diff base sha vs head sha — works for fork and same-repo PRs
+      # For PRs: diff base sha vs head sha ··· works for fork and same-repo PRs
       #          regardless of what the branch is named.
       # For push: diff HEAD~1 vs HEAD.
-      # Result written to a temp file — never interpolated into shell or JS.
+      # Result written to a temp file ··· never interpolated into shell or JS.
       # -----------------------------------------------------------------------
       - name: Detect changed skill files
         id: changed
@@ -68,7 +68,7 @@ jobs:
           fi
 
       # -----------------------------------------------------------------------
-      # Run enrichment script — writes results back into each submission file.
+      # Run enrichment script ··· writes results back into each submission file.
       # -----------------------------------------------------------------------
       - name: Enrich skill metadata
         id: enrich
@@ -151,7 +151,7 @@ jobs:
             const rows = skills.map(s => {
               const guard = s.agentguard_report_url
                 ? `[View report](${s.agentguard_report_url})`
-                : '⏳ pending';
+                : '·�� pending';
               return [
                 `**[${s.name}](${s.github_url})**`,
                 (s.category ?? []).join(', '),

@@ -23,14 +23,14 @@ jobs:
 
       # -----------------------------------------------------------------------
       # Allowed paths for contributors:
-      #   skills/<skillname>-metadata.json   — skill submissions
-      #   README.md                          — top-level readme only
+      #   skills/<skillname>-metadata.json   ··· skill submissions
+      #   README.md                          ··· top-level readme only
       #
       # Everything else is off-limits:
-      #   .github/         — workflow files
-      #   scripts/         — enrichment script
-      #   CONTRIBUTING.md  — contribution guide
-      #   skills/_TEMPLATE-metadata.json — template file
+      #   .github/         ··· workflow files
+      #   scripts/         ··· enrichment script
+      #   CONTRIBUTING.md  ··· contribution guide
+      #   skills/_TEMPLATE-metadata.json ··· template file
       # -----------------------------------------------------------------------
       - name: Check for out-of-scope changes
         id: scope
@@ -58,7 +58,7 @@ jobs:
 
           if [ -n "$VIOLATIONS" ]; then
             echo "violations=true" >> "$GITHUB_OUTPUT"
-            # Write to temp file — not interpolated into shell or JS
+            # Write to temp file ··· not interpolated into shell or JS
             printf "%b" "$VIOLATIONS" > /tmp/violations.txt
             echo "Out-of-scope files detected:"
             cat /tmp/violations.txt
@@ -89,7 +89,7 @@ jobs:
               rows,
               '',
               '**Allowed paths:**',
-              '- `skills/<skillname>-metadata.json` — your skill submission',
+              '- `skills/<skillname>-metadata.json` ··· your skill submission',
               '- `README.md`',
               '',
               'Please remove changes to any other files and push again.',

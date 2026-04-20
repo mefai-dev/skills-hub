@@ -1,6 +1,6 @@
 # Contributing to Skills Hub
 
-Submitting a skill takes about 2 minutes. You create one JSON file — the rest is automated.
+Submitting a skill takes about 2 minutes. You create one JSON file ··· the rest is automated.
 
 ---
 
@@ -23,13 +23,13 @@ Use [`skills/_TEMPLATE-metadata.json`](skills/_TEMPLATE-metadata.json) as your s
 
 | Field | Type | Required | Notes |
 |-------|------|----------|-------|
-| `name` | string | No | Display name — defaults to filename if omitted |
+| `name` | string | No | Display name ··· defaults to filename if omitted |
 | `github_url` | string | **Yes** | Must be a public GitHub repository URL |
 | `category` | string[] | **Yes** | Array of tags (e.g. `["git", "automation"]`) |
 | `description` | string | **Yes** | What it does; one or two sentences |
 
 > The filename (minus `-metadata.json`) becomes the skill's identifier.
-> Example: `my-skill-metadata.json` → identifier `my-skill`
+> Example: `my-skill-metadata.json` ·�� identifier `my-skill`
 
 ---
 
@@ -78,7 +78,7 @@ The enriched file is committed back automatically after merge.
 
 ## Guidelines
 
-- **Public repos only** — private repos cannot be validated
-- **No duplicates** — check the `skills/` folder before submitting
-- **One PR per skill** — keeps review focused
+- **Public repos only** ··· private repos cannot be validated
+- **No duplicates** ··· check the `skills/` folder before submitting
+- **One PR per skill** ··· keeps review focused
 

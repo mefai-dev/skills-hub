@@ -108,7 +108,7 @@ async function enrich(submissionFilePath) {
   const absPath = path.resolve(submissionFilePath);
   const skillId = path.basename(absPath, '-metadata.json');
 
-  console.log(`\n→ Enriching: ${skillId}`);
+  console.log(`\n·�� Enriching: ${skillId}`);
 
   // 1. Parse contributor-submitted JSON
   const { name, githubUrl, category, description } = parseSubmission(absPath);
@@ -144,7 +144,7 @@ async function enrich(submissionFilePath) {
     const skillContent = await fetchRepoContent(owner, repo, repoData.default_branch);
 
     if (!skillContent) {
-      console.warn('  ⚠ No scannable content found in repo — skipping AgentGuard');
+      console.warn('  ·�� No scannable content found in repo ··· skipping AgentGuard');
     } else {
       console.log(`  Calling AgentGuard API`);
       try {
@@ -172,14 +172,14 @@ async function enrich(submissionFilePath) {
           console.log(`  AgentGuard report: ${agentguardReportUrl ?? 'no reportUrl in response'}`);
         } else {
           const errBody = await agRes.text();
-          console.warn(`  ⚠ AgentGuard returned ${agRes.status}: ${errBody} — skipping`);
+          console.warn(`  ·�� AgentGuard returned ${agRes.status}: ${errBody} ··· skipping`);
         }
       } catch (err) {
-        console.warn(`  ⚠ AgentGuard call failed: ${err.message} — skipping`);
+        console.warn(`  ·�� AgentGuard call failed: ${err.message} ··· skipping`);
       }
     }
   } else {
-    console.warn('  ⚠ AGENTGUARD_API_KEY not set — skipping security scan');
+    console.warn('  ·�� AGENTGUARD_API_KEY not set ··· skipping security scan');
   }
 
   // 6. Merge enriched fields into the original submission file
@@ -207,7 +207,7 @@ async function enrich(submissionFilePath) {
   };
 
   fs.writeFileSync(absPath, JSON.stringify(enriched, null, 2) + '\n');
-  console.log(`✓ Done: ${skillId}\n`);
+  console.log(`·�· Done: ${skillId}\n`);
 
   return enriched;
 }
@@ -230,7 +230,7 @@ if (args.length === 0) {
     try {
       await enrich(filePath);
     } catch (err) {
-      console.error(`✗ Failed [${filePath}]: ${err.message}`);
+      console.error(`·�� Failed [${filePath}]: ${err.message}`);
       hasError = true;
     }
   }
